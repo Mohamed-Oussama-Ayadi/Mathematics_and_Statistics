@@ -1,0 +1,18 @@
+#1. Importation des données 
+baby<-read.table(file=file.choose(),header=TRUE,sep="\t",dec=".")
+#2.
+names(baby)
+dim(baby)
+head(baby)
+# 3. Filtrage des données
+plot(baby$age)
+#4.
+baby$age>80
+which(baby$age>80)
+baby$age[400] <- NA
+#5.
+summary(baby)
+#6.
+#Boxplot
+boxplot(baby$weight~baby$parity)
+table(baby$parity)

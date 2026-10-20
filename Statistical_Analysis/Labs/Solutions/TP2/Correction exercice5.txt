@@ -1,0 +1,16 @@
+data<-read.table(file=file.choose())
+attach(data)
+
+#2
+m = mean(V1)
+m
+s = sd(V1)
+s
+#3
+zs = (V1 - m)/s
+zs
+#4
+summary(zs)
+
+#5 
+#Z-score < 2 : absence des résultats aberrants.

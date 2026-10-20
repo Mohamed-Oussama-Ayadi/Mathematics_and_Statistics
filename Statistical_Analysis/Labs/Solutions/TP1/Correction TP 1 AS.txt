@@ -1,0 +1,38 @@
+#question 1
+Individus <- c("Erika","Célia","Eric","Eve","Paul",
+               "Jean","Adan","Louis","Jules","Léo")
+Poids <- c(16,14,13.5,15.4,16.5,16,17,14.8,17,16.7)
+Taille <- c(100,97,95.5,101,100,98.5,103,98,101.5,100)
+Sexe <- c("F","F","G","F","G","G","G","G","G","G")
+
+#question 2
+mean(Poids)  # résultat :  [1] 15.69
+mean(Taille) # résultat :  [1] 99.45
+
+#question 3
+IMC <- Poids/(Taille/100)^2 
+IMC   # affichage des résultats
+#question 4
+#la structure data frame est la plus adaptée
+TableIMC <- data.frame(Individus,Poids,Taille,Sexe,IMC)
+TableIMC
+#question 5
+attach(TableIMC)
+#question 6
+TableIMCG<-TableIMC[which(Sexe=="G"&IMC>16),]
+#question 7
+TableIMC_ord=TableIMC[order(TableIMC$IMC),]
+#question  8
+enfants=TableIMC[which(TableIMC$IMC>15),]
+#question 9
+min(TableIMCG$IMC);max(TableIMCG$IMC)
+#question 10
+nrow(TableIMC);ncol(TableIMC)
+#question 11
+?plot
+#question 12
+plot(Taille,Poids,main="Nuage de points du Poids en fonction de la Taille")
+#question 13
+barplot(TableIMC$Taille,TableIMC$Poids)
+#question 14
+write.table(TableIMC,"import.txt",sep="")

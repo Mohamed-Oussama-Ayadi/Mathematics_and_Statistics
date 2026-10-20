@@ -1,0 +1,36 @@
+#question1--------------------------------------------------------------
+individus<-c("Erika","Celia","Eric","Eve","Paul","Jean","Aden","Louis","Jule","Léo")
+poids<-c(16,14,13.5,15.5,16.5,16,17,14.8,17,16.7)
+taille<-c(100,97,95.5,101,100,98.5,103,98,101.5,100)
+sexe<-c("F","F","G","F","G","G","G","G","G","G")
+#question2--------------------------------------------------------------
+mean(poids)
+mean(taille)
+#question3--------------------------------------------------------------
+imc<-poids/(taille/100)^2;imc
+#question4--------------------------------------------------------------
+tableIMC<-data.frame(individus,poids,taille,imc);tableIMC
+#question5--------------------------------------------------------------
+mean(tableIMC$poids);
+#question6--------------------------------------------------------------
+tableIMCG<-tableIMC[which(sexe=="G"&imc>16),];tableIMCG
+#question7--------------------------------------------------------------
+tableau_imcORD<-tableIMCG[order(tableIMCG$imc),];tableau_imcORD
+#question7*--------------------------------------------------------------
+tableau_imcORD<-tableIMCG[order(tableIMCG$imc,decreasing=T),];tableau_imcORD
+#question8--------------------------------------------------------------
+table_enfants<-tableIMC[which(tableIMC$imc>15),];
+nrow(table_enfants)
+#question9--------------------------------------------------------------
+min(tableIMC$imc)
+max(tableIMC$imc)
+#question10-------------------------------------------------------------
+nrow(tableIMCG)
+ncol(tableIMCG)
+#question11 (HELP)------------------------------------------------------
+?plot
+#question12-------------------------------------------------------------
+#****poids=f(taille)****************************************************
+plot(taille,poids,xlab="taille en cm",ylab="poids en kg",main="poids en fonction de la taille")
+#question13-------------------------------------------------------------
+barplot(tableIMC$taille,tableIMC$poids)

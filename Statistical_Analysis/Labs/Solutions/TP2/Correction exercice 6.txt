@@ -1,0 +1,109 @@
+
+R version 3.3.3 (2017-03-06) -- "Another Canoe"
+Copyright (C) 2017 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin13.4.0 (64-bit)
+
+R est un logiciel libre livré sans AUCUNE GARANTIE.
+Vous pouvez le redistribuer sous certaines conditions.
+Tapez 'license()' ou 'licence()' pour plus de détails.
+
+R est un projet collaboratif avec de nombreux contributeurs.
+Tapez 'contributors()' pour plus d'information et
+'citation()' pour la façon de le citer dans les publications.
+
+Tapez 'demo()' pour des démonstrations, 'help()' pour l'aide
+en ligne ou 'help.start()' pour obtenir l'aide au format HTML.
+Tapez 'q()' pour quitter R.
+
+[R.app GUI 1.69 (7328) x86_64-apple-darwin13.4.0]
+
+[Espace de Travail restauré depuis /Users/kmar/.RData]
+[Historique recherché depuis /Users/kmar/.Rapp.history]
+
+> cars
+   speed dist
+1      4    2
+2      4   10
+3      7    4
+4      7   22
+5      8   16
+6      9   10
+7     10   18
+8     10   26
+9     10   34
+10    11   17
+11    11   28
+12    12   14
+13    12   20
+14    12   24
+15    12   28
+16    13   26
+17    13   34
+18    13   34
+19    13   46
+20    14   26
+21    14   36
+22    14   60
+23    14   80
+24    15   20
+25    15   26
+26    15   54
+27    16   32
+28    16   40
+29    17   32
+30    17   40
+31    17   50
+32    18   42
+33    18   56
+34    18   76
+35    18   84
+36    19   36
+37    19   46
+38    19   68
+39    20   32
+40    20   48
+41    20   52
+42    20   56
+43    20   64
+44    22   66
+45    23   54
+46    24   70
+47    24   92
+48    24   93
+49    24  120
+50    25   85
+> data1<-cars
+> summary(data1)
+     speed           dist       
+ Min.   : 4.0   Min.   :  2.00  
+ 1st Qu.:12.0   1st Qu.: 26.00  
+ Median :15.0   Median : 36.00  
+ Mean   :15.4   Mean   : 42.98  
+ 3rd Qu.:19.0   3rd Qu.: 56.00  
+ Max.   :25.0   Max.   :120.00  
+> data1$dist2 <- data1$dist * 0.3048
+> data1$speed2 <- ifelse(test = cars$speed < 10, yes = NA, no = cars$speed * 1.60934)
+> data1_standard <- scale(data1)
+> 
+> summary(data1_standard)
+     speed               dist             dist2             speed2        
+ Min.   :-2.15597   Min.   :-1.5903   Min.   :-1.5903   Min.   :-1.52529  
+ 1st Qu.:-0.64301   1st Qu.:-0.6589   1st Qu.:-0.6589   1st Qu.:-0.83341  
+ Median :-0.07565   Median :-0.2709   Median :-0.2709   Median :-0.02621  
+ Mean   : 0.00000   Mean   : 0.0000   Mean   : 0.0000   Mean   : 0.00000  
+ 3rd Qu.: 0.68083   3rd Qu.: 0.5053   3rd Qu.: 0.5053   3rd Qu.: 0.78099  
+ Max.   : 1.81555   Max.   : 2.9888   Max.   : 2.9888   Max.   : 1.93413  
+                                                        NA's   :6         
+> minimums <- apply(cars, MARGIN = 2, FUN = min)  # obtention des minimums par variable
+> maximums <- apply(cars, MARGIN = 2, FUN = max)  # obtention des maximums par variable
+> cars_01norm <- scale(cars, center = minimums, scale = maximums - minimums)
+> summary(cars_01norm)
+     speed             dist       
+ Min.   :0.0000   Min.   :0.0000  
+ 1st Qu.:0.3810   1st Qu.:0.2034  
+ Median :0.5238   Median :0.2881  
+ Mean   :0.5429   Mean   :0.3473  
+ 3rd Qu.:0.7143   3rd Qu.:0.4576  
+ Max.   :1.0000   Max.   :1.0000  
+2019-09-22 14:39:00.676 R[1624:707] Unknown class '_FITagEditorView', using 'NSView' instead. Encountered in Interface Builder file at path /System/Library/Frameworks/AppKit.framework/Resources/French.lproj/NSNavPanelContentView.nib.
+> 
